@@ -3,20 +3,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PostHeader from './PostHeader';
 
-const Post = ({ value }) => (
+const Post = props => (
   <div className="post">
-    <PostHeader post={value} />
+    <PostHeader post={props.value} />
     <hr />
-    {value.texto}
+    <p>{props.value.texto}</p>
   </div>
 );
 
-Post.defaultProps = {
-  post: {},
-};
-
 Post.propTypes = {
-  post: PropTypes.element,
+  value: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    texto: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Post;
